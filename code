@@ -1,0 +1,21 @@
+import cv2 
+import numpy as np 
+import tensorflow as tf
+model = tf.keras.models.load_model("emotion_model.h5") 
+cap = cv2.VideoCapture(0)
+  while True: 
+ret, frame = cap.read() 
+face = cv2.resize(frame, (48,48)) 
+face = cv2.cvtColor(face, cv2.COLOR_BGR2GRAY) 
+face = face / 255.0
+face = np.expand_dims(face, axis=0) 
+face = np.expand_dims(face, axis=-1) 
+prediction = model.predict(face)
+emotion = np.argmax(prediction) 
+labels = ["Angry", "Happy", "Sad", "Surprise", "Neutral"] 
+cv2.putText(frame, labels[emotion], (50,50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2) 
+cv2.imshow("Emotion Detection", frame) 
+if cv2.waitKey(1) & 0xFF == 27:
+break 
+cap.release() 
+cv2.destroyAllWindows()
