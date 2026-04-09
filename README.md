@@ -1,61 +1,56 @@
-# Facial-Emotion-Recognition-using-OpenCV-and-Deepface
-This project implements real-time facial emotion detection using the `deepface` library and OpenCV. It captures video from the webcam, detects faces, and predicts the emotions associated with each face. The emotion labels are displayed on the frames in real-time.
-This is probably the shortest code to implement realtime emotion monitoring.
+Real-Time Face Emotion Detection
 
-## Dependencies
+This project is a Real-Time Face Emotion Recognition System built using Python, OpenCV, NumPy, and TensorFlow. It captures video from your webcam and predicts human emotions based on facial expressions.
 
-- [deepface](https://github.com/serengil/deepface): A deep learning facial analysis library that provides pre-trained models for facial emotion detection. It relies on TensorFlow for the underlying deep learning operations.
-- [OpenCV](https://opencv.org/): An open-source computer vision library used for image and video processing.
+🚀 Features
+🎥 Real-time webcam face detection
+🧠 Emotion prediction using trained deep learning model
+⚡ Fast and lightweight implementation
+🏷️ Displays emotion label on screen
+🧰 Technologies Used
+Python
+OpenCV (cv2)
+NumPy
+TensorFlow / Keras
+📁 Project Structure
+emotion-detection/
+│
+├── emotion_model.h5     # Trained model file
+├── main.py              # Main Python script
+├── README.md            # Project documentation
+⚙️ Installation
+Clone the repository:
+git clone https://github.com/your-username/emotion-detection.git
+cd emotion-detection
+Install required libraries:
+pip install opencv-python numpy tensorflow
+▶️ How to Run
+python main.py
+Webcam will open 📷
+Emotion will be displayed on the screen
 
-## Usage
-### Initial steps:
-- Run: `cd Facial-Emotion-Recognition-using-OpenCV-and-Deepface`
-1. Install the required dependencies:
-   - You can use `pip install -r requirements.txt`
-   - Or you can install dependencies individually:
-      - `pip install deepface`
-      - `pip install tf_keras`
-      - `pip install opencv-python`
+Press ESC to exit.
 
-2. Download the Haar cascade XML file for face detection:
-   - Visit the [OpenCV GitHub repository](https://github.com/opencv/opencv/tree/master/data/haarcascades) and download the `haarcascade_frontalface_default.xml` file.
+🧠 Model Details
+Input shape: 48x48 grayscale image
+Preprocessing:
+Resize image
+Convert to grayscale
+Normalize pixel values
+Output:
+Emotion categories:
+Angry 😠
+Happy 😊
+Sad 😢
+Surprise 😲
+Neutral 😐
+📌 Code Explanation (Short)
+Capture video using OpenCV
+Resize and preprocess frame
+Predict emotion using TensorFlow model
+Display result using cv2.putText()
 
-3. Run the code:
-   - Execute the Python script.
-   - The webcam will open, and real-time facial emotion detection will start.
-   - Emotion labels will be displayed on the frames around detected faces.
 
-## Approach
-
-1. Import the necessary libraries: `cv2` for video capture and image processing, and `deepface` for the emotion detection model.
-
-2. Load the Haar cascade classifier XML file for face detection using `cv2.CascadeClassifier()`.
-
-3. Start capturing video from the default webcam using `cv2.VideoCapture()`.
-
-4. Enter a continuous loop to process each frame of the captured video.
-
-5. Convert each frame to grayscale using `cv2.cvtColor()`.
-
-6. Detect faces in the grayscale frame using `face_cascade.detectMultiScale()`.
-
-7. For each detected face, extract the face ROI (Region of Interest).
-
-8. Preprocess the face image for emotion detection using the `deepface` library's built-in preprocessing function.
-
-9. Make predictions for the emotions using the pre-trained emotion detection model provided by the `deepface` library.
-
-10. Retrieve the index of the predicted emotion and map it to the corresponding emotion label.
-
-11. Draw a rectangle around the detected face and label it with the predicted emotion using `cv2.rectangle()` and `cv2.putText()`.
-
-12. Display the resulting frame with the labeled emotion using `cv2.imshow()`.
-
-13. If the 'q' key is pressed, exit the loop.
-
-14. Release the video capture and close all windows using `cap.release()` and `cv2.destroyAllWindows()`.
-
-![image](https://github.com/manish-9245/Facial-Emotion-Recognition-using-OpenCV-and-Deepface/assets/69393822/57c41270-7575-4bc7-ae7a-99d67239a5ab)
 
 
 
